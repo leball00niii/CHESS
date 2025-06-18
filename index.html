@@ -1,26 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chess Game</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css" />
+<meta charset="UTF-8" />
+<title>Échiquier personnalisé</title>
+<link rel="stylesheet" href="https://unpkg.com/chessboardjs@1.0.0/css/chessboard-1.0.0.min.css" />
+<style>
+  #board {
+    width: 400px;
+    margin: 20px auto;
+  }
+</style>
 </head>
 <body>
-  <div id="login-container">
-    <input type="text" id="username" placeholder="Enter username" />
-    <button onclick="login()">Play</button>
-  </div>
-  <div id="chess-container" style="display:none;">
-    <h2 id="welcome"></h2>
-    <div id="board"></div>
-  </div>
 
-  <!-- SCRIPTS dans le bon ordre -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- ✅ jQuery ajouté ici -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
-  <script src="script.js"></script>
+<div id="board"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/chessboardjs@1.0.0/js/chessboard-1.0.0.min.js"></script>
+
+<script>
+  var board = Chessboard('board', {
+    pieceTheme: function(piece) {
+      var pieceName = '';
+      switch(piece[1].toLowerCase()) {
+        case 'p': pieceName = 'pion.png'; break;
+        case 'r': pieceName = 'tour.png'; break;
+        case 'n': pieceName = 'cavalier.png'; break;
+        case 'b': pieceName = 'fou.png'; break;
+        case 'q': pieceName = 'dame.png'; break;
+        case 'k': pieceName = 'roi.png'; break;
+      }
+      var colorFolder = (piece[0] === 'w') ? 'w/' : 'b/';
+      // Le chemin est ici modifié pour correspondre à public/img/chesspieces/
+      return 'img/chesspieces/' + colorFolder + pieceName;
+    },
+    position: 'start'
+  });
+</script>
+
 </body>
 </html>
