@@ -19,22 +19,23 @@
 <script src="https://unpkg.com/chessboardjs@1.0.0/js/chessboard-1.0.0.min.js"></script>
 
 <script>
-  var board = Chessboard('board', {
-    pieceTheme: function(piece) {
-      var pieceName = '';
-      switch(piece[1].toLowerCase()) {
-        case 'p': pieceName = 'pion.png'; break;
-        case 'r': pieceName = 'tour.png'; break;
-        case 'n': pieceName = 'cavalier.png'; break;
-        case 'b': pieceName = 'fou.png'; break;
-        case 'q': pieceName = 'dame.png'; break;
-        case 'k': pieceName = 'roi.png'; break;
-      }
-      var colorFolder = (piece[0] === 'w') ? 'w/' : 'b/';
-      // Le chemin est ici modifié pour correspondre à public/img/chesspieces/
-      return 'img/chesspieces/' + colorFolder + pieceName;
-    },
-    position: 'start'
+  $(document).ready(function() {
+    var board = Chessboard('board', {
+      pieceTheme: function(piece) {
+        var pieceName = '';
+        switch(piece[1].toLowerCase()) {
+          case 'p': pieceName = 'pion.png'; break;
+          case 'r': pieceName = 'tour.png'; break;
+          case 'n': pieceName = 'cavalier.png'; break;
+          case 'b': pieceName = 'fou.png'; break;
+          case 'q': pieceName = 'dame.png'; break;
+          case 'k': pieceName = 'roi.png'; break;
+        }
+        var colorFolder = (piece[0] === 'w') ? 'w/' : 'b/';
+        return 'img/chesspieces/' + colorFolder + pieceName;
+      },
+      position: 'start'
+    });
   });
 </script>
 
