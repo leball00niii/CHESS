@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+#login-container {
+  padding-top: 100px;
+}
+#username {
+  padding: 10px;
+  font-size: 16px;
+}
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+#board {
+  width: 400px;
+  margin: 20px auto;
+  position: relative;
+}
+.arrow {
+  position: absolute;
+  height: 3px;
+  background-color: red;
+  pointer-events: none;
+  z-index: 10;
+}
